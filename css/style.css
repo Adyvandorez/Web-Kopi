@@ -1,0 +1,458 @@
+:root {
+	--primary: #b6895b; /* Warna utama tema (coklat emas) */
+	--bg: #010101; /* Warna latar belakang gelap */
+}
+
+* {
+	font-family: "poppins", sans-serif; /* Font dasar untuk semua elemen */
+	margin: 0; /* Menghapus jarak luar default */
+	padding: 0; /* Menghapus jarak dalam default */
+	box-sizing: border-box; /* Memastikan padding dan border masuk dalam total ukuran elemen */
+	outline: none; /* Menghapus outline saat fokus (seperti input) */
+	border: none; /* Menghapus border default */
+}
+
+html {
+	scroll-behavior: smooth; /* Mengaktifkan scroll halus saat navigasi */
+}
+
+body {
+	font-family: "poppins", sans-serif; /* Mengatur font untuk seluruh halaman */
+	background-color: var(--bg); /* Warna latar belakang hitam dari variabel */
+	color: #fff; /* Warna teks putih */
+}
+
+/* ============================= */
+/* Navbar */
+/* ============================= */
+
+.navbar {
+	display: flex; /* Mengatur elemen anak dalam baris */
+	justify-content: space-between; /* Jarak antar elemen (logo di kiri, menu di kanan) */
+	align-items: center; /* Memusatkan vertikal */
+	padding: 1rem 7%; /* Padding atas-bawah 1rem, kiri-kanan 7% */
+	background-color: rgba(1, 1, 1, 0.8); /* Warna hitam transparan */
+	border-bottom: 1px solid #654c33; /* Garis bawah coklat */
+	position: fixed; /* Navbar tetap di atas saat scroll */
+	top: 0;
+	left: 0;
+	right: 0; /* Menempel ke sisi atas kiri kanan */
+	z-index: 9999; /* Supaya navbar selalu di depan elemen lain */
+}
+
+.navbar .navbar-logo {
+	font-size: 2rem; /* Ukuran font besar */
+	font-weight: 700; /* Ketebalan huruf bold */
+	color: #fff; /* Warna putih */
+	font-style: italic; /* Huruf miring */
+	text-decoration: none; /* Menghapus garis bawah */
+}
+
+.navbar .navbar-logo span {
+	color: var(--primary); /* Mewarnai bagian tertentu dengan warna utama */
+	font-style: italic; /* Tetap miring */
+}
+
+.navbar .navbar-nav a {
+	color: #fff; /* Warna link putih */
+	display: inline-block; /* Supaya bisa diberikan margin dan efek */
+	font-size: 1.3rem; /* Ukuran font */
+	margin: 0 1rem; /* Jarak kanan-kiri antar link */
+	position: relative; /* Untuk pseudo-element ::after */
+	text-decoration: none; /* Menghapus garis bawah */
+}
+
+.navbar .navbar-nav a:hover {
+	color: var(--primary); /* Saat hover, ubah warna jadi warna utama */
+}
+
+.navbar .navbar-nav a::after {
+	content: ""; /* Membuat pseudo-elemen untuk garis bawah animasi */
+	position: absolute;
+	left: 0;
+	bottom: -1px;
+	width: 100%;
+	height: 2px;
+	background-color: var(--primary); /* Warna garis bawah */
+	transform: scaleX(0); /* Garis disembunyikan dulu */
+	transform-origin: left; /* Animasi mulai dari kiri */
+	transition: transform 0.3s ease; /* Animasi saat muncul */
+}
+
+.navbar .navbar-nav a:hover::after {
+	transform: scaleX(1); /* Saat hover, garis bawah ditampilkan */
+}
+
+.navbar .navbar-extra a {
+	color: #fff; /* Warna ikon tambahan */
+	margin: 0 0.5rem; /* Jarak kanan-kiri */
+}
+
+.navbar .navbar-extra a:hover {
+	color: var(--primary); /* Warna berubah saat hover */
+}
+
+#hamburger-menu {
+	display: none; /* Disembunyikan, hanya tampil di layar kecil */
+}
+
+/* ============================= */
+/* Hero Section */
+/* ============================= */
+
+.hero {
+	min-height: 100vh; /* Tinggi minimum layar penuh */
+	display: flex; /* Mengatur posisi isi */
+	align-items: center; /* Memusatkan isi secara vertikal */
+	background-image: url("../img/header-bg.jpg"); /* Gambar latar belakang */
+	background-repeat: no-repeat; /* Gambar tidak diulang */
+	background-size: cover; /* Menutupi seluruh area */
+	background-position: center; /* Pusat gambar */
+	position: relative; /* Untuk posisi pseudo-element ::after */
+}
+
+.hero::after {
+	content: ""; /* Elemen tambahan untuk efek gradasi bawah */
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 30%; /* Tinggi area gradasi */
+	bottom: 0;
+	background: linear-gradient(
+		0deg,
+		rgba(1, 1, 3, 1) 8%,
+		/* Hitam pekat di bawah */ rgba(255, 255, 255, 0) 25%
+			/* Transparan ke atas */
+	);
+}
+
+.hero .content {
+	padding: 1.4rem 7%; /* Ruang dalam konten */
+	max-width: 60rem; /* Lebar maksimum konten */
+}
+
+.hero .content h1 {
+	font-size: 5rem; /* Ukuran besar untuk heading */
+	color: #fff; /* Warna putih */
+	text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5); /* Bayangan teks */
+	line-height: 1.2; /* Spasi antar baris */
+}
+
+.hero .content h1 span {
+	color: var(--primary); /* Warna berbeda untuk teks tertentu */
+}
+
+.hero .content p {
+	font-size: 1.6rem; /* Ukuran teks paragraf */
+	margin-top: 1rem; /* Jarak atas dari elemen sebelumnya */
+	line-height: 1.4; /* Spasi antar baris */
+	font-weight: 100; /* Tipis */
+	text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5); /* Bayangan teks */
+}
+
+.hero .content .cta {
+	margin-top: 1rem; /* Jarak atas */
+	display: inline-block; /* Supaya bisa diberi padding dan hover */
+	padding: 1rem 3rem; /* Ruang dalam tombol */
+	font-size: 1.4rem;
+	color: #fff;
+	background-color: var(--primary); /* Warna latar tombol */
+	border-radius: 0.5rem; /* Membulatkan sudut */
+	box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5); /* Bayangan tombol */
+}
+.about,
+.menu,
+.contact {
+	/* Padding atas 8rem, kanan-kiri 7%, bawah 1.4rem */
+	/* Digunakan bersama karena punya gaya layout serupa */
+	padding: 8rem 7% 1.4rem;
+}
+
+.about h2,
+.menu h2,
+.contact h2 {
+	/* Judul bagian diselaraskan dan diberi jarak bawah */
+	text-align: center;
+	font-size: 2.6rem; /* Ukuran heading */
+	margin-bottom: 3rem; /* Jarak dengan elemen berikutnya */
+}
+
+.about h2 span,
+.menu h2 span,
+.contact h2 span {
+	/* Warna teks tertentu di heading diganti */
+	color: var(--primary);
+}
+
+.about .row {
+	display: flex; /* Elemen sejajar (gambar + teks) */
+}
+
+.about .row .about-img {
+	flex: 1 1 45rem; /* Lebar fleksibel dengan ukuran awal 45rem */
+}
+
+.about .row .about-img img {
+	width: 100%; /* Gambar memenuhi kolom */
+	border-radius: 4%; /* Sudut gambar sedikit membulat */
+	object-fit: cover; /* Gambar menyesuaikan tanpa distorsi */
+}
+
+.about .row .content {
+	flex: 1 1 35rem; /* Kolom teks */
+	padding: 0 1rem; /* Jarak kiri-kanan */
+}
+
+.about .row .content h3 {
+	font-size: 1.8rem; /* Ukuran subheading */
+	margin-bottom: 1rem; /* Jarak bawah */
+}
+
+.about .row .content p {
+	margin-bottom: 0.8rem; /* Jarak antar paragraf */
+	font-size: 1.3rem; /* Ukuran teks */
+	font-weight: 100; /* Tipis */
+	line-height: 1.6; /* Spasi antar baris */
+}
+.menu h2,
+.contact h2 {
+	margin-bottom: 1rem; /* Jarak heading dengan deskripsi */
+}
+
+.menu p,
+.contact p {
+	text-align: center; /* Teks rata tengah */
+	max-width: 30rem; /* Lebar maksimal paragraf */
+	margin: auto; /* Tengah secara horizontal */
+	font-weight: 100;
+	line-height: 1.6;
+}
+
+.menu .row {
+	display: flex; /* Menyusun menu secara horizontal */
+	flex-wrap: wrap; /* Jika sempit, menu turun ke baris berikutnya */
+	justify-content: center; /* Menu dirata tengah */
+	margin-top: 3rem; /* Jarak dari judul */
+}
+
+.menu .row .menu-card {
+	text-align: center;
+	padding: 1rem;
+	max-width: 250px; /* Ukuran maksimum kartu menu */
+	margin: 1rem;
+	background-color: #111; /* Warna latar kartu */
+	border-radius: 1rem; /* Sudut membulat */
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Bayangan halus */
+}
+
+.menu .row .menu-card img {
+	border-radius: 1rem; /* Sudut gambar membulat */
+	width: 100%; /* Gambar mengikuti lebar kartu */
+	height: 200px; /* Tinggi tetap */
+	object-fit: cover; /* Gambar tidak terdistorsi */
+}
+
+.menu .row .menu-card .menu-card-title {
+	margin: 1rem auto 0.5rem; /* Margin atas dan bawah judul */
+}
+.contact .row {
+	display: flex; /* Dua kolom (peta + form) */
+	margin-top: 2rem;
+	background-color: #222; /* Warna latar gelap */
+}
+
+.contact .row .map {
+	flex: 1 1 45rem;
+	width: 100%;
+	object-fit: cover; /* Pastikan peta proporsional */
+}
+
+.contact .row form {
+	flex: 1 1 45rem;
+	padding: 2rem 2rem; /* Ruang dalam form */
+	text-align: center;
+}
+
+.contact .row form .input-group {
+	display: flex; /* Input + ikon horizontal */
+	align-items: center;
+	margin-top: 1.2rem;
+	background-color: var(--bg);
+	border: 1px solid #eee;
+	padding-left: 1.5rem;
+}
+
+.contact .row form .input-group input {
+	width: 100%;
+	padding: 1rem;
+	font-size: 1.5rem;
+	background: none; /* Transparan */
+	color: #fff;
+}
+
+.contact .row form .btn {
+	margin-top: 1.5rem;
+	padding: 0.6rem 1.8rem;
+	font-size: 1.4rem;
+	color: #fff;
+	background-color: var(--primary);
+	border-radius: 0.4rem;
+	cursor: pointer;
+	transition: 0.3s ease;
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+.contact .row form .btn:hover {
+	background-color: #a06f45; /* Warna berubah saat hover */
+	transform: scale(1.04); /* Sedikit membesar saat hover */
+}
+footer {
+	background-color: var(--primary); /* Latar warna utama */
+	text-align: center;
+	padding: 1rem 0 3rem; /* Ruang atas kecil, bawah besar */
+	margin-top: 3rem; /* Jarak dari atas */
+}
+
+footer .socials {
+	padding: 1rem 0; /* Ruang atas-bawah ikon sosial */
+}
+
+footer .socials a {
+	color: #fff;
+	margin: 1rem; /* Jarak antar ikon */
+}
+
+footer .socials a:hover,
+footer .links a:hover {
+	color: var(--bg); /* Saat hover, berubah jadi gelap */
+}
+
+footer .links {
+	margin-bottom: 1.4rem;
+}
+
+footer .links a {
+	color: #fff;
+	padding: 0.7rem 1rem; /* Jarak dalam tiap link */
+}
+
+footer .credit {
+	font-size: 0.8rem; /* Ukuran teks kecil */
+}
+
+footer .credit a {
+	color: var(--bg);
+	font-weight: 700; /* Bold untuk nama pembuat */
+}
+
+/* Laptop */
+@media (max-width: 1366px) {
+	/* Mengurangi ukuran font pada layar laptop */
+	html {
+		font-size: 75%; /* Mengurangi ukuran font dasar */
+	}
+}
+
+/* Tablet */
+@media (max-width: 758px) {
+	/* Mengurangi ukuran font pada layar tablet */
+	html {
+		font-size: 62.5%; /* Mengurangi ukuran font lebih kecil */
+	}
+
+	/* Menampilkan menu hamburger pada layar kecil */
+	#hamburger-menu {
+		display: inline-block; /* Mengaktifkan ikon menu di perangkat kecil */
+	}
+
+	/* Mengubah navbar menjadi menu dropdown */
+	.navbar .navbar-nav {
+		position: absolute;
+		top: 100%; /* Menempatkan navbar di bawah navbar utama */
+		right: -100%; /* Navbar tersembunyi di luar layar */
+		background-color: #fff;
+		width: 30rem; /* Lebar navbar */
+		height: 100vh; /* Mengisi seluruh tinggi layar */
+		transition: 0.3s; /* Efek transisi saat membuka navbar */
+	}
+
+	/* Menambahkan kelas 'active' agar navbar muncul */
+	.navbar .navbar-nav.active {
+		right: 0; /* Navbar muncul setelah kelas active diterapkan */
+	}
+
+	/* Mengubah style menu item pada navbar */
+	.navbar .navbar-nav a {
+		color: var(--bg); /* Warna teks item navbar */
+		display: block; /* Menjadikan link block agar mudah diklik */
+		margin: 1.5rem;
+		padding: 0.5rem;
+		font-size: 2rem; /* Ukuran font lebih besar */
+	}
+
+	/* Menyesuaikan efek hover pada menu navbar */
+	.navbar .navbar-nav a::after {
+		transform-origin: 0 0; /* Titik awal transformasi */
+	}
+
+	.navbar .navbar-nav a:hover::after {
+		transform: scaleX(0.2); /* Efek hover pada garis bawah */
+	}
+
+	/* Membuat about section lebih responsif */
+	.about .row {
+		flex-wrap: wrap; /* Elemen-about dibungkus pada layar kecil */
+	}
+
+	/* Menyesuaikan ukuran gambar di about section */
+	.about .row .about-img img {
+		height: 24rem; /* Menurunkan tinggi gambar */
+		object-fit: cover; /* Agar gambar tetap proporsional */
+		object-position: center; /* Gambar tetap terpusat */
+	}
+
+	/* Menyesuaikan layout konten di about section */
+	.about .row .content {
+		padding: 0; /* Menghapus padding pada kolom teks */
+	}
+
+	/* Mengubah ukuran teks dan jarak di about section */
+	.about .row .content h3 {
+		margin-top: 1rem;
+		font-size: 1.6rem; /* Ukuran heading lebih kecil */
+	}
+
+	/* Mengubah ukuran teks di about section */
+	.about .row .content p {
+		font-size: 1.6rem; /* Ukuran teks lebih kecil */
+	}
+
+	/* Mengubah ukuran font pada menu section */
+	.menu p {
+		font-size: 1.2rem; /* Mengurangi ukuran font */
+	}
+
+	/* Membuat form di contact section lebih responsif */
+	.contact .row {
+		flex-wrap: wrap; /* Kolom map dan form akan turun ke bawah */
+	}
+
+	/* Menyesuaikan ukuran peta */
+	.contact .row .map {
+		height: 30rem; /* Tinggi peta menyesuaikan */
+		width: 1%; /* Memperkecil lebar peta */
+	}
+
+	/* Menyesuaikan padding pada form */
+	.contact .row form {
+		padding-top: 0; /* Mengurangi padding atas */
+	}
+}
+
+/* Mobile Phone */
+@media (max-width: 450px) {
+	/* Mengurangi ukuran font untuk ponsel */
+	html {
+		font-size: 55%; /* Ukuran font lebih kecil */
+	}
+}
